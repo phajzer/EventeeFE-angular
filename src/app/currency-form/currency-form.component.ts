@@ -4,6 +4,7 @@ import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angula
 import {NgIf} from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { CurrencyService } from '../currency.service';
 
 @Component({
   selector: 'app-currency-form',
@@ -13,14 +14,13 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   styleUrls: ['./currency-form.component.scss']
 })
 export class CurrencyFormComponent {
+  constructor(private currencyService: CurrencyService) {}
   email = new FormControl('', [Validators.required, Validators.email]);
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+  sendRequest(): void {
+    console.log('wyslany');
+    const result = this.currencyService.fetchCurrentCurrencyValue();
+    console.log(result);
   }
 
 }
