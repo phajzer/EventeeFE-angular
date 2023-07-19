@@ -1,0 +1,12 @@
+<h1>Check current currency value</h1>
+<div class="example-container">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput>
+      </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enter currency code </mat-label>
+      <input matInput placeholder="USD" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
